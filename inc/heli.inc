@@ -232,7 +232,7 @@ sub Heli.moveAndDrawShots()
 end sub
 
 'testX and testY in ViewPort coordinates
-function Heli.isHit(testX,testY) AS INTEGER
+function Heli.isHit(x,y,w,h) AS INTEGER
   LOCAL rectX(8)= ( 7, 5,41,41,41,17,21, 4,16)
   LOCAL rectY(8)= ( 5,18,19,19,19,17, 5,18,18)
   LOCAL rectW(8)= (68,73,17,17,17,75,69,76,74)
@@ -245,7 +245,8 @@ function Heli.isHit(testX,testY) AS INTEGER
   y2=y1+rectH(Heli.State)
 
   Heli.isHit=0
-  if (testX>x1 AND TestX<x2 AND testY>y1 AND testY<y2) then
+  if not (x+w<x1 or x>x2 or y+h<y1 or y>y2) then
+'  if (x>x1 AND x<x2 AND y>y1 AND y<y2) then
     Heli.isHit=1
   endif
 end function
@@ -285,6 +286,5 @@ sub Heli.Sound speed%
     oldSpeed=speed%
   endif
 end sub
-
 
 

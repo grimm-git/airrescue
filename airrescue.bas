@@ -27,6 +27,7 @@ DIM Integer Player.Score
 #Include "inc/huts.inc"
 #Include "inc/camps.inc"
 #Include "inc/tanks.inc"
+#Include "inc/jets.inc"
 #Include "inc/humans.inc"
 
 ' After crash
@@ -58,9 +59,9 @@ DIM Integer lock.turn
 DIM Integer ctrl
 DIM Integer ctrlTime
 DIM Integer key
-DIM Float   a
-DIM Integer color
-DIM Float   GameOverTimer
+DIM Float   a           ' Title colorcycling
+DIM Integer color        ' Title colorcycling
+DIM Float   GameOverTimer ' Time from GameOver to Intro
 
 Game.init
 Game.loadAssets

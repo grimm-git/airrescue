@@ -4,6 +4,8 @@
 CONST WE.PROG_DIR$=we.get_parent$(Mm.Info$(Current))
 CONST MAX_LEVELS=9
 
+CONST EVENT_JETS=60000
+
 CONST STATE_INTRO=0
 CONST STATE_DEMO=1
 CONST STATE_GAME=2
@@ -75,6 +77,7 @@ sub Game.setupLevel()
   LOCAL Integer LvTanks(MAX_LEVELS)=(4,4,6,6,8,8,10,10,12,12)
   LOCAL Integer LvTankFireRate(MAX_LEVELS)=(3000,2500,2500,2500,2500,2000,2000,2000,1000,1000)
   LOCAL Integer LvFreeHumans(MAX_LEVELS)=(4,4,5,5,8,8,12,12,15,15)
+  LOCAL Integer LvJets(MAX_LEVELS)=(1,1,1,1,2,2,2,2,3,3)
 
   Collision.init()
   Basis.init
@@ -84,6 +87,7 @@ sub Game.setupLevel()
   Huts.init  Level.Levels$(Level)
   Camps.init Level.Levels$(Level)
   Tanks.init LvTanks(Level),LvTankFireRate(Level)
+  Jets.init  LvJets(Level)
   Humans.init LvFreeHumans(Level)
   
   Level.HumansTotal=Humans.count()
@@ -124,6 +128,9 @@ sub Game.clearScr
 end sub
 
 sub Game.draw()
+  STATIC Float eventTimer=TIMER
+  STATIC Float jetTimer=TIMER
+
   Hills.draw
   Pebbles.draw
   Sams.draw
@@ -132,12 +139,22 @@ sub Game.draw()
   Camps.draw
   Humans.draw
   Basis.draw
+  Jets.draw
 
   if (Game.State=STATE_GAME) then
     Heli.moveAndDrawShots
     Heli.draw
     Tanks.moveAndDrawShots
+    Jets.moveAndDrawShots
     Sams.moveAndDrawMissile
+    
+    if (TIMER-eventTimer>EVENT_JETS) then
+      if (TIMER-jetTimer>SPEED_JETNEXT) then
+        Jets.new
+        jetTimer=TIMER
+        if (Jets.State(Jets.cnt-1)<>JET_NONE) then eventTimer=TIMER
+      endif
+    endif
   endif
 
   Tanks.draw
