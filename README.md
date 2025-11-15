@@ -2,8 +2,8 @@
 This is a game written in MMBasic for the Color Maximite 2 (CMM2)
 
 The goal of the game is to rescue people from an hostile environment.
-The enemy will try everything to stop you. But be carefull in combat
-not to kill your people by friendly fire.
+The enemy will try everything to stop you. But be careful in combat
+not to kill your people with friendly fire.
 
 This game was inspired by the old classic 'Choplifter' from the C64
 or Atari. It has been redeveloped from scratch including graphics,
@@ -16,7 +16,7 @@ Fire	    Button z	Key 'a'
 
 To change the orientation of the helicopter move the joystick in the
 desired direction and press fire button for 1-2 seconds. This way you
-an fly backwards or turn the helicopter.
+can fly backwards or turn the helicopter.
 
 To board people just land close to them. After landing they will
 start running towards the helicopter.
