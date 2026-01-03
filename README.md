@@ -35,4 +35,4 @@ them under the Creative Commons Lizenz CC BY 4.0 (https://creativecommons.org/li
 
 Have fun
 
-  Matthias Grimm
+  Matthias
